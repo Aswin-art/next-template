@@ -1,11 +1,10 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isProtectedRoute = createRouteMatcher([]);
+const isProtectedRoute = createRouteMatcher([""]);
 
 export default clerkMiddleware(async (auth, req) => {
   const url = req.nextUrl;
-  const searchParams = url.searchParams.toString();
 
   if (!auth().userId && isProtectedRoute(req)) {
     // Add custom logic to run before redirecting

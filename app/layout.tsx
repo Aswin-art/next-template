@@ -5,10 +5,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "Helvi",
-  description: "Waste Bank Management App",
+  title: "Next JS Template",
+  description: "Template for next.js application",
 };
 
 export default function RootLayout({
@@ -22,12 +23,8 @@ export default function RootLayout({
         <head />
         <body>
           <NextTopLoader color="#1e40af" />
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <Toaster position="top-center" />
+          <ThemeProvider attribute="class" disableTransitionOnChange>
             {children}
           </ThemeProvider>
         </body>

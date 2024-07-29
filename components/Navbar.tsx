@@ -23,73 +23,51 @@ import { Button } from "./ui/button";
 
 type Props = {};
 
+const items = [
+  {
+    name: "Beranda",
+    url: "/",
+  },
+  {
+    name: "Komunitas",
+    url: "/communities",
+  },
+  {
+    name: "Event",
+    url: "/events",
+  },
+];
+
 const Navbar = (props: Props) => {
   const pathname = usePathname();
   return (
     <div className="w-full fixed top-0 left-0 right-0 z-20 p-4">
       <Wrapper>
-        <div className="flex justify-between items-center gap-4 rounded-xl p-4 bg-background border border-input">
+        <div className="flex justify-between items-center gap-4 rounded-xl p-4 border bg-background border-input">
           <aside className="flex gap-2 items-center">
             <Image
-              src={"/plura-logo.svg"}
+              src={"/logo.png"}
               draggable={false}
               alt="logo"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
             <Link href={"/"} className="font-bold text-xl">
-              Helvi.
+              Helvi
             </Link>
           </aside>
           <nav className="gap-4 hidden lg:flex flex-grow justify-center items-center">
-            <Link
-              href={"/"}
-              className={clsx("hover:text-blue-600 transition-all", {
-                "text-blue-600": pathname === "/",
-              })}
-            >
-              Beranda
-            </Link>
-            <Link
-              href={"/posts"}
-              className={clsx("hover:text-blue-600 transition-all", {
-                "text-blue-600": pathname === "/posts",
-              })}
-            >
-              Pos Sampah
-            </Link>
-            <Link
-              href={"/communities"}
-              className={clsx("hover:text-blue-600 transition-all", {
-                "text-blue-600": pathname === "/communities",
-              })}
-            >
-              Komunitas
-            </Link>
-            <Link
-              href={"/events"}
-              className={clsx("hover:text-blue-600 transition-all", {
-                "text-blue-600": pathname === "/event",
-              })}
-            >
-              Event
-            </Link>
-            <Link
-              href={"/news"}
-              className={clsx("hover:text-blue-600 transition-all", {
-                "text-blue-600": pathname === "/news",
-              })}
-            >
-              Berita
-            </Link>
-            <Link
-              href={"/guides"}
-              className={clsx("hover:text-blue-600 transition-all", {
-                "text-blue-600": pathname === "/guides",
-              })}
-            >
-              Panduan
-            </Link>
+            {items.map((nav) => (
+              <Link
+                href={nav.url}
+                key={nav.name}
+                className={clsx("hover:text-blue-600 transition-all", {
+                  "text-blue-600": pathname === nav.url,
+                })}
+              >
+                {nav.name}
+              </Link>
+            ))}
           </nav>
           <aside>
             <div className="hidden lg:flex lg:gap-2 lg:items-center">
@@ -121,84 +99,41 @@ const Navbar = (props: Props) => {
                 <SheetContent className="flex flex-col justify-between">
                   <SheetHeader>
                     <div className="flex gap-2 items-center">
-                      <Image
-                        src={"/plura-logo.svg"}
-                        draggable={false}
-                        alt="logo"
-                        width={40}
-                        height={40}
+                      <UserButton
+                        appearance={{
+                          elements: {
+                            userButtonPopoverActionButton__manageAccount: {
+                              display: "none",
+                            },
+                          },
+                        }}
                       />
-                      <SheetTitle>Helvi Navbar Menu</SheetTitle>
+                      <SheetTitle>| App Name</SheetTitle>
                     </div>
                   </SheetHeader>
                   <nav className="gap-4 pt-10 flex flex-col flex-grow">
+                    {items.map((nav) => (
+                      <Link
+                        href={nav.url}
+                        key={nav.name}
+                        className={clsx(
+                          "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
+                          {
+                            "text-blue-600 bg-blue-600/10":
+                              pathname === nav.url,
+                          }
+                        )}
+                      >
+                        {nav.name}
+                      </Link>
+                    ))}
                     <Link
-                      href={"/"}
-                      className={clsx(
-                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
-                        {
-                          "text-blue-600 bg-blue-600/10": pathname === "/",
-                        }
-                      )}
+                      href={"/user"}
+                      className={
+                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md"
+                      }
                     >
-                      Beranda
-                    </Link>
-                    <Link
-                      href={"/posts"}
-                      className={clsx(
-                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
-                        {
-                          "text-blue-600 bg-blue-600/10": pathname === "/posts",
-                        }
-                      )}
-                    >
-                      Pos Sampah
-                    </Link>
-                    <Link
-                      href={"/communities"}
-                      className={clsx(
-                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
-                        {
-                          "text-blue-600 bg-blue-600/10":
-                            pathname === "/communities",
-                        }
-                      )}
-                    >
-                      Komunitas
-                    </Link>
-                    <Link
-                      href={"/events"}
-                      className={clsx(
-                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
-                        {
-                          "text-blue-600 bg-blue-600/10": pathname === "/event",
-                        }
-                      )}
-                    >
-                      Event
-                    </Link>
-                    <Link
-                      href={"/news"}
-                      className={clsx(
-                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
-                        {
-                          "text-blue-600 bg-blue-600/10": pathname === "/news",
-                        }
-                      )}
-                    >
-                      Berita
-                    </Link>
-                    <Link
-                      href={"/guides"}
-                      className={clsx(
-                        "hover:text-blue-600 hover:bg-blue-600/10 transition-all border border-input p-4 rounded-md",
-                        {
-                          "text-blue-600 bg-blue-600/10":
-                            pathname === "/guides",
-                        }
-                      )}
-                    >
-                      Panduan
+                      Dashboard
                     </Link>
                   </nav>
                   <SheetFooter>
