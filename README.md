@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+Here are the tech stacks that used in this repo:
 
 - Shadcn/ui
 - RHF + Zod
@@ -30,6 +30,10 @@ To learn more about Next.js, take a look at the following resources:
 - Uploadthing
 - Clerk
 - Prisma
+- Resend + React Email
+- Upstash Redis
+- Tanstack Table
+- Blocknote
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
